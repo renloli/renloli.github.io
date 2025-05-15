@@ -11,11 +11,11 @@ locale                   : "en-US"
 site_theme               : "default"
 title                    : "Home"
 title_separator          : "-"
-name                     : &name "Guorui Zhu"
+name                     : &name "renloli"
 description              : &description "OTAKU"
-url                      : https://renlililoli.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
+url                      : https://renloli.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "renlililoli/renlililoli.github.io"
+repository               : "renloli/renloli.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
@@ -23,9 +23,9 @@ repository               : "renlililoli/renlililoli.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Guorui Zhu"
+  name             : "renloli"
   pronouns         : # example: "she/her"  
-  bio              : "Green. Z."
+  bio              : "renloli"
   location         : "Shanghi, China"
   employer         : "Fudan University"
   uri              : # URL
@@ -46,7 +46,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "renlililoli"
+  github           : "renloli"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 

@@ -1,7 +1,7 @@
 ---
 permalink: /
-title: "Guorui Zhu's Homepage"
-author_profile: true
+title: "上海地下偶像信息收集"
+author_profile: false
 redirect_from: 
   - /about/
   - /about.html
@@ -11,16 +11,18 @@ redirect_from:
 
 <!-- ====== -->
 
-## Hello
+## 关于为什么要做这个东西
 
-I am a graduate student in Fudan University majoring computational Mathematics.
+我做这个玩意只是觉得微博不太好用, 部分团又没有很好的时间线整理, 所以想做这样一个东西, 让大家能方便的看活.
 
-Currently, my interests mainly focus on
+因为个人时间有限, 所以只会更新上海的活, 不能保证比板子快, 甚至会漏掉一些活, 只能尽量保证速度和质量.
 
-- Quantum Computing
+我也是纯纯菜鸡, 没做过网页, 如你所见, 这是用学术个人主页模板用jeckll构建的网页, 托管在github上, 
+所以如果你有兴趣可以发pull request或者issue一起维护.
 
+目前它和我的个人主页用了同一个仓库, 之后会把它独立出来.
 
-## Events
+## Update logs
 
 <!-- Getting started
 ======
