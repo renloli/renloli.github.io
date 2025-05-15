@@ -11,11 +11,12 @@ main:
   # - title: "Publications"
   #   url: /publications/
 
-  - title: "Essays"
-    url: /essays/
-
   - title: "Timetable"
     url: /timetable/
+
+  - title: "Essays"
+    url: /essays/
+  
     
   # - title: "Talks"
   #   url: /talks/    
