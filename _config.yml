@@ -317,9 +317,6 @@ defaults:
       layout: timetable
       author_profile: false
       share: false
-      comment: true
-      excerpt: true
-      modified: true
 
 
 # Sass/SCSS
