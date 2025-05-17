@@ -75,10 +75,10 @@ layout: default
                 <div class="content" style="display: none;">{{ post.content | strip_html | downcase }}</div>
 
                 <!-- ✅ 展示所有 "##" 层级的标题 -->
-                {% assign headings = post.content | split: "\n" | where_exp: "line", "line contains '## '" %}
+                {% assign headings = post.content | newline_to_br | split: "<br />" | where_exp: "line", "line contains '## '" %}
                 <ul class="headings">
                   {% for heading in headings %}
-                    <li>{{ heading | remove: '## ' | strip }}</li>
+                  <li>{{ heading | remove: '## ' | strip }}</li>
                   {% endfor %}
                 </ul>
               </li>
