@@ -89,9 +89,6 @@ layout: default
             container.appendChild(grid);
           }
 
-          const now = new Date();
-          renderCalendar(now.getFullYear(), now.getMonth(), eventsByDate);
-
           const today = new Date();
           for (let d = 1; d <= daysInMonth; d++) {
             const cell = document.createElement('div');
@@ -118,6 +115,11 @@ layout: default
             }
             grid.appendChild(cell);
           }
+
+          const now = new Date();
+          renderCalendar(now.getFullYear(), now.getMonth(), eventsByDate);
+
+          
 
         </script>
 
@@ -191,8 +193,7 @@ layout: default
             color: #556b2f; /* 深绿色字体 */
             user-select: none;
           }
-          
-          .calendar-event {
+            .calendar-event {
             background-color: #cdeac0; /* 浅绿色 */
             color: #3a5a20; /* 深绿色文字 */
             border-radius: 5px;
@@ -201,13 +202,14 @@ layout: default
             font-size: 1rem;
             line-height: 1.2em;
             white-space: normal;
-            overflow-wrap: break-word;
-            max-height: 80px;
+            word-wrap: break-word; /* 强制换行 */
+            max-width: 200px; /* 固定宽度 */
+            overflow-wrap: break-word; /* 兼容性 */
             overflow-y: auto;
             box-shadow: 0 2px 5px rgb(205 234 192 / 0.7);
             transition: background-color 0.2s ease;
-          }
-          
+            }
+
           .calendar-event a {
             color: #3a5a20;
             text-decoration: none;
@@ -226,6 +228,12 @@ layout: default
           .calendar-cell:nth-child(7n+1),
           .calendar-cell:nth-child(7n) {
             background-color: #fef8d4; /* 更浅的黄 */
+          }
+
+          /* 今天的日期高亮 */
+          .calendar-cell.today {
+            background-color: #ffeb3b; /* 明亮的黄色 */
+            border: 2px solid #fbc02d; /* 深黄色边框 */
           }
           
           
