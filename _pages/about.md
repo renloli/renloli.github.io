@@ -1,7 +1,7 @@
 ---
 permalink: /
 title: "上海地下偶像信息收集"
-author_profile: false
+author_profile: true
 redirect_from: 
   - /about/
   - /about.html
