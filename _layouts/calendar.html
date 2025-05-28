@@ -89,6 +89,10 @@ layout: default
             container.appendChild(grid);
           }
 
+
+          const now = new Date();
+          renderCalendar(now.getFullYear(), now.getMonth(), eventsByDate);
+
           const today = new Date();
           for (let d = 1; d <= daysInMonth; d++) {
             const cell = document.createElement('div');
@@ -115,10 +119,6 @@ layout: default
             }
             grid.appendChild(cell);
           }
-
-          const now = new Date();
-          renderCalendar(now.getFullYear(), now.getMonth(), eventsByDate);
-
           
 
         </script>
