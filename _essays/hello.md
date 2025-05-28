@@ -16,5 +16,3 @@ location: "Shanghi, China"
 
 我也是纯纯菜鸡, 没做过网页, 如你所见, 这是用学术个人主页模板用jeckll构建的网页, 托管在github上, 
 所以如果你有兴趣可以发pull request或者issue一起维护.
-
-目前它和我的个人主页用了同一个仓库, 之后会把它独立出来.
