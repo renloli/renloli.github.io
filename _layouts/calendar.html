@@ -105,9 +105,9 @@ layout: default
         
           const now = new Date();
           document.getElementById('calendar-container').innerHTML = '';
-          renderCalendar(now.getFullYear(), now.getMonth(), eventsByDate); // 当前月
+          renderCalendar(now.getFullYear(), now.getMonth(), eventsByDate);
           renderCalendar(now.getMonth() === 11 ? now.getFullYear() + 1 : now.getFullYear(),
-                         (now.getMonth() + 1) % 12, eventsByDate); // 下个月
+                         (now.getMonth() + 1) % 12, eventsByDate);
         </script>
 
         <style>
