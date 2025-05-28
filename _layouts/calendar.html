@@ -99,7 +99,6 @@ layout: default
 
             const dateStr = `${year}-${String(month + 1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
 
-            // 判断是否是今天
             if (year === today.getFullYear() && month === today.getMonth() && d === today.getDate()) {
               cell.classList.add('today');
             }
