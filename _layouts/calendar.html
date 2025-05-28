@@ -36,14 +36,20 @@ layout: default
               {% endunless %}
             {% endfor %}
           };
-
+        
           function renderCalendar(year, month, events) {
-            const container = document.getElementById('calendar-container');
-            container.innerHTML = '';
-
+            const section = document.createElement('div');
+            section.className = 'calendar-section';
+        
+            const headerTitle = document.createElement('h2');
+            headerTitle.className = 'calendar-month-title';
+            const monthName = new Date(year, month).toLocaleString('default', { month: 'long' });
+            headerTitle.textContent = `${monthName} ${year}`;
+            section.appendChild(headerTitle);
+        
             const scrollInner = document.createElement('div');
             scrollInner.className = 'calendar-scroll-inner';
-
+        
             const header = document.createElement('div');
             header.className = 'calendar-header';
             ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d => {
@@ -52,34 +58,34 @@ layout: default
               header.appendChild(el);
             });
             scrollInner.appendChild(header);
-
+        
             const grid = document.createElement('div');
             grid.className = 'calendar-grid';
-
+        
             const firstDay = new Date(year, month, 1).getDay();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
             const today = new Date();
-
+        
             for (let i = 0; i < firstDay; i++) {
               const empty = document.createElement('div');
               empty.className = 'calendar-cell empty';
               grid.appendChild(empty);
             }
-
+        
             for (let d = 1; d <= daysInMonth; d++) {
               const cell = document.createElement('div');
               cell.className = 'calendar-cell';
               const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-
+        
               if (year === today.getFullYear() && month === today.getMonth() && d === today.getDate()) {
                 cell.classList.add('today');
               }
-
+        
               const dateNumber = document.createElement('div');
               dateNumber.className = 'date-number';
               dateNumber.textContent = d;
               cell.appendChild(dateNumber);
-
+        
               if (events[dateStr]) {
                 events[dateStr].forEach(e => {
                   const el = document.createElement('div');
@@ -88,17 +94,20 @@ layout: default
                   cell.appendChild(el);
                 });
               }
-
+        
               grid.appendChild(cell);
             }
-
-            scrollInner.appendChild(header);
+        
             scrollInner.appendChild(grid);
-            container.appendChild(scrollInner);
+            section.appendChild(scrollInner);
+            document.getElementById('calendar-container').appendChild(section);
           }
-
+        
           const now = new Date();
-          renderCalendar(now.getFullYear(), now.getMonth(), eventsByDate);
+          document.getElementById('calendar-container').innerHTML = '';
+          renderCalendar(now.getFullYear(), now.getMonth(), eventsByDate); // 当前月
+          renderCalendar(now.getMonth() === 11 ? now.getFullYear() + 1 : now.getFullYear(),
+                         (now.getMonth() + 1) % 12, eventsByDate); // 下个月
         </script>
 
         <style>
@@ -107,6 +116,18 @@ layout: default
             width: 100%;
             margin: 20px auto;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          }
+
+          .calendar-section {
+            margin-bottom: 40px;
+          }
+          
+          .calendar-month-title {
+            font-size: 1.8rem;
+            color: #3a5a20;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
           }
 
           .calendar-scroll-inner {
