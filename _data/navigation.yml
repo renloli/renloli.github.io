@@ -14,6 +14,9 @@ main:
   - title: "Timetable"
     url: /timetable/
 
+  - title: "Calendar"
+    url: /calendar/
+
   - title: "Essays"
     url: /essays/
   
