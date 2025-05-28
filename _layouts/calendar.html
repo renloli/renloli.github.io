@@ -46,6 +46,7 @@ layout: default
 
             const firstDay = new Date(year, month, 1).getDay();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
 
             const header = document.createElement('div');
             header.className = 'calendar-header';
@@ -69,6 +70,10 @@ layout: default
               const cell = document.createElement('div');
               cell.className = 'calendar-cell';
               const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+
+              if (year === today.getFullYear() && month === today.getMonth() && d === today.getDate()) {
+                cell.classList.add('today');
+              }
               const dateNumber = document.createElement('div');
               dateNumber.className = 'date-number';
               dateNumber.textContent = d;
@@ -92,33 +97,6 @@ layout: default
 
           const now = new Date();
           renderCalendar(now.getFullYear(), now.getMonth(), eventsByDate);
-
-          const today = new Date();
-          for (let d = 1; d <= daysInMonth; d++) {
-            const cell = document.createElement('div');
-            cell.className = 'calendar-cell';
-
-            const dateStr = `${year}-${String(month + 1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-
-            if (year === today.getFullYear() && month === today.getMonth() && d === today.getDate()) {
-              cell.classList.add('today');
-            }
-
-            const dateNumber = document.createElement('div');
-            dateNumber.className = 'date-number';
-            dateNumber.textContent = d;
-            cell.appendChild(dateNumber);
-
-            if (events[dateStr]) {
-              events[dateStr].forEach(e => {
-                const el = document.createElement('div');
-                el.className = 'calendar-event';
-                el.innerHTML = `<a href="${e.url}">${e.title}</a>`;
-                cell.appendChild(el);
-              });
-            }
-            grid.appendChild(cell);
-          }
           
 
         </script>
@@ -156,7 +134,7 @@ layout: default
           .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            grid-auto-rows: 180px;
+            grid-auto-rows: auto;
             border: 1px solid #cdd9a3; /* 浅绿色边框 */
             border-top: none;
             border-radius: 0 0 6px 6px;
@@ -193,7 +171,8 @@ layout: default
             color: #556b2f; /* 深绿色字体 */
             user-select: none;
           }
-            .calendar-event {
+          
+          .calendar-event {
             background-color: #cdeac0; /* 浅绿色 */
             color: #3a5a20; /* 深绿色文字 */
             border-radius: 5px;
@@ -208,7 +187,7 @@ layout: default
             overflow-y: auto;
             box-shadow: 0 2px 5px rgb(205 234 192 / 0.7);
             transition: background-color 0.2s ease;
-            }
+          }
 
           .calendar-event a {
             color: #3a5a20;
@@ -235,8 +214,6 @@ layout: default
             background-color: #ffeb3b; /* 明亮的黄色 */
             border: 2px solid #fbc02d; /* 深黄色边框 */
           }
-          
-          
         </style>
       </section>
     </div>
