@@ -1,6 +1,5 @@
 ---
 layout: default
-title: calendar
 ---
 
 {% include base_path %}
@@ -16,7 +15,7 @@ title: calendar
         <div id="calendar-container"></div>
 
         <script>
-          const eventsByDate = {
+          <!-- const eventsByDate = {
             {% for post in site.timetable %}
               "{{ post.date | date: '%Y-%m-%d' }}": (eventsByDate["{{ post.date | date: '%Y-%m-%d' }}"] || []).concat([
                 {
@@ -26,7 +25,30 @@ title: calendar
                 }
               ]),
             {% endfor %}
+          }; -->
+
+          const eventsByDate = {
+            {% assign dates_seen = "" %}
+            {% for post in site.timetable %}
+              {% assign post_date = post.date | date: "%Y-%m-%d" %}
+              {% unless dates_seen contains post_date %}
+                "{{ post_date }}": [
+                  {% for p in site.timetable %}
+                    {% assign d = p.date | date: "%Y-%m-%d" %}
+                    {% if d == post_date %}
+                      {
+                        title: "{{ p.title | escape }}",
+                        url: "{{ p.url }}",
+                        tags: [{% for tag in p.tags %}"{{ tag }}"{% unless forloop.last %}, {% endunless %}{% endfor %}]
+                      }{% unless forloop.last %},{% endunless %}
+                    {% endif %}
+                  {% endfor %}
+                ],
+                {% assign dates_seen = dates_seen | append: post_date | append: "," %}
+              {% endunless %}
+            {% endfor %}
           };
+          
 
           function renderCalendar(year, month, events) {
             const container = document.getElementById('calendar-container');
