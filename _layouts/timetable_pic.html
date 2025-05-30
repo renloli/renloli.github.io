@@ -49,6 +49,14 @@ layout: default
           {% for group in grouped %}
             <div class="year-month"><strong>{{ group.name }}</strong></div>
 
+            <!-- ✅ 图片画廊 -->
+            <div class="gallery" id="gallery-{{ group.name | remove: '-' }}">
+              <div class="gallery-track"></div>
+              <div class="gallery-controls">
+                <button onclick="scrollGallery('{{ group.name | remove: '-' }}', -1)">‹</button>
+                <button onclick="scrollGallery('{{ group.name | remove: '-' }}', 1)">›</button>
+              </div>
+            </div>
 
             {% assign date_groups = group.items | group_by_exp:"item", "item.date | date: '%Y-%m-%d'" %}
             <ul>
@@ -110,7 +118,34 @@ layout: default
             entries.forEach(entry => entry.style.display = '');
           }
 
-          
+          document.addEventListener("DOMContentLoaded", function () {
+            const galleries = document.querySelectorAll('.gallery');
+
+            galleries.forEach(gallery => {
+              const galleryId = gallery.id;
+              const groupName = galleryId.replace('gallery-', '');
+              const folder = `/timetable/${groupName.slice(0, 4)}/${groupName.slice(4, 6)}/images/`;
+              const track = gallery.querySelector('.gallery-track');
+
+              for (let i = 31; i >= 1; i--) {
+                for (let j = 0; j <= 5; j++) {
+                  const img = new Image();
+                  img.src = folder + i + "_" + j + ".jpg";
+                  img.onerror = function () { this.remove(); };
+                  img.onload = function () {
+                    img.className = "gallery-image";
+                    track.appendChild(img);
+                  };
+                }
+              }
+            });
+          });
+
+          function scrollGallery(id, direction) {
+            const track = document.querySelector(`#${id} .gallery-track`);
+            const scrollAmount = track.offsetWidth;
+            track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+          }
         </script>
 
         <!-- ✅ 样式 -->
