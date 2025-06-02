@@ -151,11 +151,16 @@ layout: default
           }
           
         
-          const now = new Date();
-          document.getElementById('calendar-container').innerHTML = '';
-          renderCalendar(now.getFullYear(), now.getMonth(), eventsByDate);
-          renderCalendar(now.getMonth() === 11 ? now.getFullYear() + 1 : now.getFullYear(),
-                         (now.getMonth() + 1) % 12, eventsByDate);
+          function refreshCalendar() {
+            const now = new Date();
+            document.getElementById('calendar-container').innerHTML = '';
+            renderCalendar(now.getFullYear(), now.getMonth(), eventsByDate);
+            renderCalendar(now.getMonth() === 11 ? now.getFullYear() + 1 : now.getFullYear(),
+                           (now.getMonth() + 1) % 12, eventsByDate);
+          }
+          
+          refreshCalendar();
+          
         </script>
 
         <style>
@@ -310,6 +315,27 @@ layout: default
             line-height: 1rem;
             white-space: nowrap;
           }
+
+          .tag-filter-btn {
+            padding: 6px 10px;
+            border: 1px solid #a4c48f;
+            background-color: #f1fbe8;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #3a5a20;
+            transition: all 0.2s ease;
+          }
+          
+          .tag-filter-btn:hover {
+            background-color: #dceccf;
+          }
+          
+          .tag-filter-btn.active {
+            background-color: #a4c48f;
+            color: white;
+          }
+          
           
         </style>
       </section>
