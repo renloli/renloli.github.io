@@ -21,6 +21,11 @@ redirect_from:
 
 这里可能会放点碎碎念小作文, 有兴趣可以投稿之类的, 希望是一些介绍性文章或者教学类.
 
+### 相关外部链接
+
+- [板子](https://weibo.com/u/7716940453 "地下偶像相关揭示板")
+- [推活日记](https://ievent.life/)
+
 
 ## 关于为什么要做这个东西
 
@@ -34,6 +39,9 @@ redirect_from:
 所以如果你有兴趣可以发pull request或者issue一起维护.
 
 ## Update logs
+
+### 2025.06.02
+- 在 Essays 里收集了关于 `surf` 等内容 
 
 ### 2025.05.28
 - 加入了 Calendar 模块
