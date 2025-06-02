@@ -48,7 +48,7 @@ layout: default
           const allTagsSet = new Set();
           Object.values(eventsByDate).flat().forEach(e => {
             if (e.tags) e.tags.forEach(tag => allTagsSet.add(tag));
-            if (e.location) allTagsSet.add(e.location); // 让 location 也参与筛选
+            if (e.location) allTagsSet.add(e.location); 
           });
           const allTags = Array.from(allTagsSet).sort();
 
