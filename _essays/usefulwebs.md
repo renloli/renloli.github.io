@@ -8,6 +8,10 @@ excerpt: '[Updating] 包括偶像团体信息, mix, 玩法教学等'
 location: "Shanghi, China"
 ---
 
+## 类似的收集
+
+- [推活日记](https://ievent.life/)
+
 ## 团体介绍类网站
 
 - [中国偶像 Wiki](https://chinaidols.fandom.com/zh/wiki/)
@@ -18,7 +22,11 @@ location: "Shanghi, China"
 
 ## Mix 收集
 
+### 内容
 - [CN米克斯](http://cmks.top/index.php)
+
+### 技巧
+- [怎么发出ota一样的沙哑声](https://www.bilibili.com/video/BV17J9FYBEtR)
 
 ## 教学类视频
 
@@ -42,3 +50,4 @@ location: "Shanghi, China"
 
 - [【熟肉地下艺】青年大学习之雷蛇](https://www.bilibili.com/video/BV1pQc1efEWA)
 - [合集·地下艺/应援/厄介相关](https://space.bilibili.com/3546740191922305/lists/4656577)
+- [地下艺教学](https://www.bilibili.com/video/BV1hf4y1t7B8)
