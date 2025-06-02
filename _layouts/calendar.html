@@ -18,7 +18,7 @@ layout: default
                  style="padding: 6px 10px; font-size: 1rem; width: 300px; border-radius: 6px; border: 1px solid #ccc;" />
           <div id="tag-filter" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px;"></div>
         </div>
-        
+
         <div id="calendar-container"></div>
 
         <script>
@@ -34,7 +34,8 @@ layout: default
                       {
                         title: "{{ p.title | escape }}",
                         url: "{{ p.url }}",
-                        tags: [{% for tag in p.tags %}"{{ tag }}"{% unless forloop.last %}, {% endunless %}{% endfor %}]
+                        tags: [{% for tag in p.tags %}"{{ tag }}"{% unless forloop.last %}, {% endunless %}{% endfor %}],
+                        location: "{{ p.location | escape }}"
                       }{% unless forloop.last %},{% endunless %}
                     {% endif %}
                   {% endfor %}
@@ -47,6 +48,7 @@ layout: default
           const allTagsSet = new Set();
           Object.values(eventsByDate).flat().forEach(e => {
             if (e.tags) e.tags.forEach(tag => allTagsSet.add(tag));
+            if (e.location) allTagsSet.add(e.location); // 让 location 也参与筛选
           });
           const allTags = Array.from(allTagsSet).sort();
 
@@ -76,16 +78,16 @@ layout: default
           function renderCalendar(year, month, events) {
             const section = document.createElement('div');
             section.className = 'calendar-section';
-          
+
             const headerTitle = document.createElement('h2');
             headerTitle.className = 'calendar-month-title';
             const monthName = new Date(year, month).toLocaleString('default', { month: 'long' });
             headerTitle.textContent = `${monthName} ${year}`;
             section.appendChild(headerTitle);
-          
+
             const scrollInner = document.createElement('div');
             scrollInner.className = 'calendar-scroll-inner';
-          
+
             const header = document.createElement('div');
             header.className = 'calendar-header';
             ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d => {
@@ -94,42 +96,45 @@ layout: default
               header.appendChild(el);
             });
             scrollInner.appendChild(header);
-          
+
             const grid = document.createElement('div');
             grid.className = 'calendar-grid';
-          
+
             const firstDay = new Date(year, month, 1).getDay();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
             const today = new Date();
-          
+
             for (let i = 0; i < firstDay; i++) {
               const empty = document.createElement('div');
               empty.className = 'calendar-cell empty';
               grid.appendChild(empty);
             }
-          
+
             const searchQuery = searchInput.value.trim().toLowerCase();
-          
+
             for (let d = 1; d <= daysInMonth; d++) {
               const cell = document.createElement('div');
               cell.className = 'calendar-cell';
               const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-          
+
               if (year === today.getFullYear() && month === today.getMonth() && d === today.getDate()) {
                 cell.classList.add('today');
               }
-          
+
               const dateNumber = document.createElement('div');
               dateNumber.className = 'date-number';
               dateNumber.textContent = d;
               cell.appendChild(dateNumber);
-          
+
               if (events[dateStr]) {
                 events[dateStr].forEach(e => {
+                  const fullTags = [...(e.tags || [])];
+                  if (e.location) fullTags.push(e.location);
+
                   const titleMatch = e.title.toLowerCase().includes(searchQuery);
-                  const tagMatch = e.tags.some(t => t.toLowerCase().includes(searchQuery));
-                  const tagFilterMatch = activeTags.size === 0 || e.tags.some(t => activeTags.has(t));
-          
+                  const tagMatch = fullTags.some(t => t.toLowerCase().includes(searchQuery));
+                  const tagFilterMatch = activeTags.size === 0 || fullTags.some(t => activeTags.has(t));
+
                   if ((titleMatch || tagMatch || searchQuery === "") && tagFilterMatch) {
                     const el = document.createElement('div');
                     el.className = 'calendar-event';
@@ -141,10 +146,10 @@ layout: default
                   }
                 });
               }
-          
+
               grid.appendChild(cell);
             }
-          
+
             scrollInner.appendChild(grid);
             section.appendChild(scrollInner);
             document.getElementById('calendar-container').appendChild(section);
