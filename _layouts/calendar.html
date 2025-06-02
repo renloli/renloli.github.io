@@ -16,7 +16,12 @@ layout: default
         <div id="filter-container" style="margin-bottom: 1.5rem;">
           <input type="text" id="search-input" placeholder="Search by title or tag..."
                  style="padding: 6px 10px; font-size: 1rem; width: 300px; border-radius: 6px; border: 1px solid #ccc;" />
-          <div id="tag-filter" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px;"></div>
+        
+          <div id="tag-filter" style="margin-top: 10px;">
+            <div id="normal-tag-filter" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;">Tags:</div>
+            <div style="margin-bottom: 4px; font-weight: bold; color: #3a5a20;">📍 Location:</div>
+            <div id="location-tag-filter" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+          </div>
         </div>
 
         <div id="calendar-container"></div>
@@ -44,18 +49,24 @@ layout: default
               {% endunless %}
             {% endfor %}
           };
-
-          const allTagsSet = new Set();
-          Object.values(eventsByDate).flat().forEach(e => {
-            if (e.tags) e.tags.forEach(tag => allTagsSet.add(tag));
-            if (e.location) allTagsSet.add(e.location); 
-          });
-          const allTags = Array.from(allTagsSet).sort();
-
-          const tagFilterContainer = document.getElementById('tag-filter');
+        
           const activeTags = new Set();
-
-          allTags.forEach(tag => {
+        
+          const normalTagContainer = document.getElementById('normal-tag-filter');
+          const locationTagContainer = document.getElementById('location-tag-filter');
+        
+          const tagSet = new Set();
+          const locationSet = new Set();
+        
+          Object.values(eventsByDate).flat().forEach(e => {
+            if (e.tags) e.tags.forEach(tag => tagSet.add(tag));
+            if (e.location) locationSet.add(e.location);
+          });
+        
+          const sortedTags = Array.from(tagSet).sort();
+          const sortedLocations = Array.from(locationSet).sort();
+        
+          function createTagButton(tag, container) {
             const btn = document.createElement('button');
             btn.textContent = tag;
             btn.className = 'tag-filter-btn';
@@ -69,9 +80,12 @@ layout: default
               }
               refreshCalendar();
             };
-            tagFilterContainer.appendChild(btn);
-          });
-
+            container.appendChild(btn);
+          }
+        
+          sortedTags.forEach(tag => createTagButton(tag, normalTagContainer));
+          sortedLocations.forEach(loc => createTagButton(loc, locationTagContainer));
+        
           const searchInput = document.getElementById('search-input');
           searchInput.addEventListener('input', () => refreshCalendar());
 
