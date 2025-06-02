@@ -42,6 +42,7 @@ redirect_from:
 
 ### 2025.06.02
 - 在 Essays 里收集了关于 `surf` 等内容 
+- 在 Calendar 页面增加了筛选功能, Location 标签还在更新中
 
 ### 2025.05.28
 - 加入了 Calendar 模块
