@@ -51,3 +51,7 @@ location: "Shanghi, China"
 - [【熟肉地下艺】青年大学习之雷蛇](https://www.bilibili.com/video/BV1pQc1efEWA)
 - [合集·地下艺/应援/厄介相关](https://space.bilibili.com/3546740191922305/lists/4656577)
 - [地下艺教学](https://www.bilibili.com/video/BV1hf4y1t7B8)
+
+## mosh
+
+- [How To Mosh: Every Move You Must Know]https://www.kerrang.com/how-to-mosh-every-move-you-must-know
