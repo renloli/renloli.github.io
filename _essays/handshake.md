@@ -16,7 +16,7 @@ location: "Shanghi, China"
 
 ## 本文更新中, 可能懒得继续收集了, 先放这么多
 
-## 常见的技
+## 常规技
 
 ### 雷蛇
 
@@ -40,12 +40,9 @@ location: "Shanghi, China"
 ### 禅蛇
 
 - [禅蛇](https://www.bilibili.com/video/BV1Pt4y1R7FP)
+- [【地下艺教学】 肉フェス 2025-Rising Hope全曲- LiSA](https://www.bilibili.com/video/BV1sqJHzKEwT)
 
 ### 功夫蛇
-
-### 印度舞
-
-- [厄介三兄贵](https://www.bilibili.com/video/BV1pG41117Kf)
 
 ### 诸刃
 
@@ -64,6 +61,12 @@ location: "Shanghi, China"
 
 ### 阿尼特拉蛇
 
+## 特殊技
+
+### 印度舞
+
+- [厄介三兄贵](https://www.bilibili.com/video/BV1pG41117Kf)
+
 ### 进藤天音蛇
 
 - [进藤天音蛇](https://www.bilibili.com/video/BV1Ud4y1A7Kk)
@@ -72,7 +75,16 @@ location: "Shanghi, China"
 
 - [必杀技蛇](https://www.bilibili.com/video/BV1bNEqzJEt3)
 
-## 组合技
+### 乞讨蛇
+
+- [【肉フェス 2024】「Please, please!」- 大橋彩香【オタ芸】【乞讨蛇】](https://www.bilibili.com/video/BV1ws3UzDENm)
+- [源视频youtube](https://www.youtube.com/watch?v=JelhO08W4fM)
+
+## archive
+
+### 【anikura】静冈anikura合集
+
+- [b站视频](https://www.bilibili.com/video/BV1wt411b7Xu)
 
 ### SPNV.
 
