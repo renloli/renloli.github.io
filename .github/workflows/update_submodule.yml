@@ -27,7 +27,7 @@ jobs:
       - name: Make files.
         run: |
           mkdir -p live
-          cp externel/data/database/html/* live/*
+          cp externel/data/database/html/* live/
 
       - name: Push changes
         run: |
