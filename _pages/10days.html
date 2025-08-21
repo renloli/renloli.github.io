@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: archive
 title: "10days"
 permalink: /10days/
 author_profile: false
@@ -7,5 +7,6 @@ author_profile: false
 
 {% include base_path %}
 
-{% include '../_10days/today.html' %}
-
+{% for post in site.10days reversed %}
+  {% include archive-single.html %}
+{% endfor %}
