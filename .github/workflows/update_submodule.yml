@@ -20,9 +20,12 @@ jobs:
           submodules: recursive
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update submodules to latest commit
+      - name: Update submodules
         run: |
-          git submodule update --remote --merge
+          git submodule deinit -f externel/data
+          rm -rf .git/modules/externel/data
+          git submodule update --init --remote externel/data
+
 
       - name: Make files.
         run: |
