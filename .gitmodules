@@ -1,0 +1,3 @@
+[submodule "externel/data"]
+	path = externel/data
+	url = https://github.com/renlililoli/IdolPosts.git

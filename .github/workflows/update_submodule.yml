@@ -1,0 +1,38 @@
+# .github/workflows/update-and-deploy.yml
+name: Update submodules and Deploy
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # 每天凌晨2点执行 (UTC时间, 注意换算时区)
+  workflow_dispatch:     # 手动触发方便测试
+
+jobs:
+  update-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # 允许推送代码
+
+
+    steps:
+      - name: Checkout main repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update submodules to latest commit
+        run: |
+          git submodule update --remote --merge
+
+      - name: Make files.
+        run: |
+          cp externel/data/database/html/today.html _10days/
+
+
+      - name: Push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _10days/
+          git commit -am "copy files" || echo "No changes to commit"
+          git push origin HEAD:${GITHUB_REF}
