@@ -26,6 +26,7 @@ jobs:
 
       - name: Make files.
         run: |
+          mkdir -p _10days
           cp externel/data/database/html/today.html _10days/today.html
 
 
