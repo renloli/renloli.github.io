@@ -26,14 +26,13 @@ jobs:
 
       - name: Make files.
         run: |
-          mkdir -p _10days
-          cp externel/data/database/html/today.html _10days/today.html
+          cp externel/data/database/html/today.html _incldues/todaylive.html
 
 
       - name: Push changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add _10days/
+          git add _includes
           git commit -am "copy files" || echo "No changes to commit"
           git push origin HEAD:${GITHUB_REF}

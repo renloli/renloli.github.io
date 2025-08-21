@@ -244,9 +244,9 @@ collections:
   timetable:
     output: true
     permalink: /:collection/:path/
-  10days:
-    output: true
-    permalink: /:collection/:path/
+  # 10days:
+  #   output: true
+  #   permalink: /:collection/:path/
 
 
 # These settings control how pages and collections are included in the site
