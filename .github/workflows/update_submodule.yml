@@ -26,7 +26,7 @@ jobs:
 
       - name: Make files.
         run: |
-          cp externel/data/database/html/today.html _10days/
+          cp externel/data/database/html/today.html _10days/today.html
 
 
       - name: Push changes
